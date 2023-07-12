@@ -1,0 +1,48 @@
+<mat-card class="example-card" >
+<h2>{{title}}</h2>
+<form #f='ngForm' (ngSubmit)='edit(f)'>
+<mat-form-field appearance="outline">
+        <mat-label for="name">Employee Name : </mat-label>
+        <input  matInput required pattern ="[a-zA-Z]+" ngModel name="empname" type='text' minlength="3" #nm='ngModel' id="name" [(ngModel)]='empname'>
+        <div class='validation' *ngIf="!nm.valid && nm.touched">
+            <div *ngIf="nm.errors.minlength ">Minimum Length should be {{nm.errors.minlength.requiredLength}} characters</div>
+            <div *ngIf="nm.errors.required ">Name Required ,Can't be empty</div>
+            <div *ngIf="nm.errors.pattern ">Only Aphabets Allowed</div>
+        </div>
+</mat-form-field>
+<p></p>
+<mat-form-field appearance="outline" >
+    <mat-label for="location">Location </mat-label>
+    <input  matInput required pattern ="[a-zA-Z]+" ngModel name="emploc" type='text' minlength="3" #loc='ngModel' id="location" [(ngModel)]='emplocation'>
+    <div class='validation' *ngIf="!loc.valid && loc.touched">
+        <div *ngIf="loc.errors.minlength ">Minimum Length should be {{loc.errors.minlength.requiredLength}} characters</div>
+        <div *ngIf="loc.errors.required ">Name Required ,Can't be empty</div>
+        <div *ngIf="loc.errors.pattern ">Only Aphabets Allowed</div>
+    </div>
+</mat-form-field>
+<p></p>
+<mat-form-field appearance="outline" >
+    <mat-label for="email">Email : </mat-label>
+    <input  matInput id='email' required #mail='ngModel' pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" type ='email' ngModel name='empemail' [(ngModel)]='empemail'>
+    <div class="validation" *ngIf='!mail.valid && mail.touched'>
+        <div *ngIf='mail.errors?.pattern'>Email Not in Correct format //example : john@email.com//</div>
+        <div *ngIf='mail.errors?.required'>Cant be Empty</div>
+    </div>
+</mat-form-field>
+<p></p>
+
+<mat-form-field appearance="outline" >
+    <mat-label for="mobile">Mobile : </mat-label>
+    <input matInput id="mobile" pattern ="[0-9]+" required #mob='ngModel' minlength="10" maxlength="10" type ='text' ngModel name='empmobile' [(ngModel)]="empmobile">
+    <div class="validation" *ngIf="!mob.valid && mob.touched">
+        <div *ngIf="mob.errors.required">Cant be Empty</div>
+        <div *ngIf="mob.errors.minlength">Minimum Length should be {{mob.errors.minlength.requiredLength}} characters </div>
+        <div *ngIf="mob.errors.pattern">Only Numbers Allowed </div>
+    </div>
+</mat-form-field>
+<p></p>
+    <button mat-raised-button color="accent" routerLink="/employees" >Back</button>&nbsp;
+    <button mat-raised-button color="accent" type="submit" id="update" [disabled]="!f.valid">Update</button>
+    <p></p>
+    </form>
+</mat-card>

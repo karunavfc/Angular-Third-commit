@@ -1,0 +1,107 @@
+<a >Filter By :</a>
+<p></p>
+<input type="text" id='filter' [(ngModel)]="filt">
+<p></p>
+Total Number Of Employees :&nbsp;<label id="count">{{emp?.length}}</label>
+<p></p>
+<mat-card class="example-card" >
+<table >
+    <thead >
+        <th>Emp ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Edit</th>
+        <th>Details</th>
+        <th>Delete</th>
+    </thead>
+    <ng-container *ngFor='let x of emp |filterr : "name" : filt;index as i'>
+    <tr>
+        <td>{{x.id}}</td>
+        <td id="name{{i+1}}">{{x.name }}</td>
+        <td id="loc{{i+1}}">{{x.location}}</td>
+        <td id="email{{i+1}}">{{x.email}}</td>
+        <td id="mob{{i+1}}">{{x.mobile}}</td>
+
+        <td>
+        <button mat-icon-button color="accent">
+            <mat-icon  [routerLink]="['../editEmployee',x.id]" >edit</mat-icon>
+        </button>
+        </td>
+        <td>
+            <button  mat-icon-button  color="primary">
+                <mat-icon   [routerLink]="['../details',x.id]">info</mat-icon>
+               </button>
+        </td>
+        <td>
+        <button  mat-icon-button  color="warn">
+            <mat-icon (click)='delete(x.id)' >delete</mat-icon>
+           </button>
+        </td>
+    </tr>
+
+</ng-container>
+</table>
+</mat-card>
+
+
+<!--
+<div class="container">
+    <div style="margin-top : 10px;" >  
+      <div class="mat-elevation-z8">
+        <table mat-table  matSort>
+      
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let x"> {{x.id}} </td>
+            <td><a [routerLink]="['../details',x.id]">{{x.id}}</a></td>
+          </ng-container>
+      
+          <ng-container matColumnDef="EmployeeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </th>
+            <td mat-cell *matCellDef="let x"> {{x.name}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="EmployeeLocation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Location </th>
+            <td mat-cell *matCellDef="let x"> {{x.location}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="EmployeeEmail">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Email </th>
+            <td mat-cell *matCellDef="let x"> {{x.email}} </td>
+          </ng-container>
+  
+           <ng-container matColumnDef="EmployeeMobileNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Mobile Number </th>
+            <td mat-cell *matCellDef="let x"> {{x.mobile}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let x"> 
+              <button  mat-icon-button  color="primary">
+                <mat-icon >info</mat-icon>
+               </button>
+  
+              <button   mat-icon-button  color="accent">
+               <mat-icon >edit</mat-icon>
+              </button>
+  
+              <button  mat-icon-button  color="warn">
+                <mat-icon >delete</mat-icon>
+               </button>
+            
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let x; columns: displayedColumns;"></tr>
+      
+        </table>
+      
+      </div>
+    </div>
+  </div>
+-->

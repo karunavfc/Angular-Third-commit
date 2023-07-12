@@ -1,0 +1,12 @@
+#details{
+    
+    padding: 10px;
+
+}
+mat-form-field {
+    width: 100%;
+  }
+  .example-card {
+      margin: 0 auto;
+      width: 40%;
+    }

@@ -1,0 +1,17 @@
+form{
+   
+    padding: 10px;
+    
+}
+.validation{
+    color:red
+}
+
+
+mat-form-field {
+    width: 100%;
+  }
+  .example-card {
+      margin: 0 auto;
+      width: 40%;
+    }
